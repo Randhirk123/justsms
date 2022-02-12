@@ -13,7 +13,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Reseller Dashboard</title>
+  <title>BlackList Number</title>
   <base
 	href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
   <!-- site favicon -->
@@ -24,6 +24,9 @@
   <!-- bootstrap toggle css -->
   <link rel="stylesheet" href="assets/userpanel/css/vendor/bootstrap-toggle.min.css">
   <!-- fontawesome 5  -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.14/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/userpanel/css/all.min.css">
   <!-- line-awesome webfont -->
   <link rel="stylesheet" href="assets/userpanel/css/line-awesome.min.css">
@@ -49,10 +52,12 @@
   <link rel="stylesheet" href="assets/userpanel/css/lightcase.css">
   <!-- dashdoard main css -->
   <link rel="stylesheet" href="assets/userpanel/css/app.css">
+    <link rel="stylesheet" href="css/dbtable.css">
 
   <link rel="stylesheet" href="assets/additional/bootstrap-fileinput.css">
   <link rel="stylesheet" href="assets/additional/intlTelInput.css">
-  
+  <link rel="stylesheet" href="css/snackbar.css">
+   <script src="js/sticky.js"></script>
     </head>
   <body>
   <!-- page-wrapper start -->
@@ -279,11 +284,11 @@
                    <ul>
                    
                    		 <li class="sidebar-menu-item sidebar-dropdown">
-                    <a href="javascript:void(0)" class="">
+                    <a href="javascript:void(0)" class="side-menu--open">
                         <i class="menu-icon fas fa-wrench"></i>
                         <span class="menu-title">Settings</span>
                     </a>
-                    <div class="sidebar-submenu ">
+                     <div class="sidebar-submenu sidebar-submenu__open ">
                         <ul>
                             <li class="sidebar-menu-item  ">
                                 <a href="/manageSignature" class="nav-link">
@@ -291,7 +296,7 @@
                                     <span class="menu-title">Manage Signature</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item  ">
+                            <li class="sidebar-menu-item active ">
                                 <a href="/blackList" class="nav-link">
                                     <i class="menu-icon las la-dot-circle"></i>
                                     <span class="menu-title">Blacklist Numbers</span>
@@ -441,220 +446,82 @@
 
                 <div class="row align-items-center mb-15 justify-content-between">
     <div class="col-lg-6 col-sm-6">
-        <h6 class="page-title">Reseller Dashboard</h6>
-    </div>
+        <h6 class="page-title">Black List Number
+</h6>
+<c:if test="${message ne null}">
+        	 <div id="snackbar">${message}</div>
+        </c:if>
+  </div>
     <div class="col-lg-6 col-sm-6 text-sm-right mt-sm-0 mt-3">
             </div>
 </div>
 
                     <div class="row mb-none-30">
 
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--primary b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--primary"><i class="fas fa-envelope"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">SMS Sent</p>
-                    <h2 class="text--primary font-weight-bold widget-amount">0</h2>
 
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--success b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--success"><i class="fas fa-chart-area"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Delivery Update</p>
-                    <h2 class="text--success font-weight-bold widget-amount">0%</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--purple b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--purple"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Promo SMS</p>
-                    <h2 class="text--purple font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--indigo b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--indigo"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Trans SMS</p>
-                    <h2 class="text--indigo font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-    </div><!-- row end-->
-<br>
-<div class="card" id="ecommerceChartView" style="height: auto;">
-            <div class="card-header" style="height: 36px;">
-                <h4></h4>
-                <div class="card-header-action">
-                    <a title="Refresh" href="javascript:void(0)" class="btn btn-icon btn-dark btn-sm" style="color: white;" onclick="BindCharts();"><i class="material-icons">refresh</i></a>
-                    
-                </div>
-            </div>
-    <div class="collapse show" id="mycard-collapse">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblDayBeforeYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div class="hide" id="chrtDayBeforeYestrdayDummy">
-                                </div>
-                                <div id="chrtDayBeforeYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblToday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtToday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-<br>
+ <div class="container p-30">
         <div class="row">
-            <div id="cphContent_dvSenderRequests" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest SenderId Requests</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="tableBody" id="client-details" tabindex="3" style="height: 400px; overflow: hidden; outline: none;">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
-                                    <thead>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>SenderId</th>
-                                            <th>Status</th>
-                                            <th>Purpose</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbSenderId">
-                                    </tbody>
-                                </table>
-                            </div>
+            <div class="col-md-12 main-datatable">
+                <div class="card_body">
+                    <div class="row d-flex">
+                        <div class="col-sm-4 createSegment"> 
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+ Add Black List Number
+</button>
                         </div>
+                        
+                    </div>
+                    <div class="overflow-x">
+                        <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th style="font-size: 15px;color:white;">Number</th>
+                                    
+                                    <th style="font-size: 15px; color: white;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <c:forEach items="${allBlackList}" var="element">
+                               <tr>
+                               		<td>${element.mobile}</td>
+                               		<td><a onclick="return confirm('Are you sure to delete this item');" href="/remove/${element.id}">
+                   Delete
+                                                </a></td>
+                               </tr>
+                                </c:forEach>
+                               
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div id="cphContent_Div1" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Traffic Report (Today)</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="progress-group form-group">
-                                <span class="progress-text">NDNC</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvNdnc"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvNdncP" class="progress-bar progress-bar-aqua"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Rejected</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvRejected"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvRejectedP" class="progress-bar progress-bar-red"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Delivered</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvDelivered"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvDeliveredP" class="progress-bar progress-bar-green"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Total Delivery Received</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvTotalDlr"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvTotalDlrP" class="progress-bar progress-bar-yellow"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<form:form action="/blackList" method="POST" modelAttribute="blacklist">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Black List Number</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <textarea name="mobile" rows="5" placeholder="Enter black list number with comma ( , ) seprated."></textarea>
+      </div>
+      <div class="modal-footer">
+   <input type="submit" style="background-color: blue" value="Save" class="btn btn-primary"/>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</form:form>
         </div>
 
 
@@ -664,7 +531,9 @@
 
 
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
 
  <!-- jQuery library -->
   <!-- jQuery library -->
@@ -842,6 +711,7 @@
         var chart = new ApexCharts(document.querySelector("#apex-bar-chart-w"), options);
         chart.render();
     </script>
-
+<script src="js/dbtab.js"></script>
+  <script type="text/javascript">toastFunction()</script>
 </body>
 </html>

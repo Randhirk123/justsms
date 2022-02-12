@@ -13,7 +13,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Reseller Dashboard</title>
+  <title>Change Password</title>
   <base
 	href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
   <!-- site favicon -->
@@ -24,6 +24,7 @@
   <!-- bootstrap toggle css -->
   <link rel="stylesheet" href="assets/userpanel/css/vendor/bootstrap-toggle.min.css">
   <!-- fontawesome 5  -->
+ 
   <link rel="stylesheet" href="assets/userpanel/css/all.min.css">
   <!-- line-awesome webfont -->
   <link rel="stylesheet" href="assets/userpanel/css/line-awesome.min.css">
@@ -52,7 +53,8 @@
 
   <link rel="stylesheet" href="assets/additional/bootstrap-fileinput.css">
   <link rel="stylesheet" href="assets/additional/intlTelInput.css">
-  
+  <link rel="stylesheet" href="css/snackbar.css">
+   <script src="js/sticky.js"></script>
     </head>
   <body>
   <!-- page-wrapper start -->
@@ -249,13 +251,13 @@
                    
                    <ul>
                    		<li class="sidebar-menu-item sidebar-dropdown">
-                    <a href="javascript:void(0)" class="">
+                    <a href="javascript:void(0)" class="side-menu--open">
                         <i class="menu-icon fa fa-archive"></i>
                         <span class="menu-title">Application</span>
                     </a>
-                    <div class="sidebar-submenu ">
+                   <div class="sidebar-submenu sidebar-submenu__open ">
                         <ul>
-                            <li class="sidebar-menu-item  ">
+                            <li class="sidebar-menu-item active ">
                                 <a href="/changepassword" class="nav-link">
                                     <i class="menu-icon las la-dot-circle"></i>
                                     <span class="menu-title">Change Password</span>
@@ -283,7 +285,7 @@
                         <i class="menu-icon fas fa-wrench"></i>
                         <span class="menu-title">Settings</span>
                     </a>
-                    <div class="sidebar-submenu ">
+                     <div class="sidebar-submenu">
                         <ul>
                             <li class="sidebar-menu-item  ">
                                 <a href="/manageSignature" class="nav-link">
@@ -291,7 +293,7 @@
                                     <span class="menu-title">Manage Signature</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item  ">
+                            <li class="sidebar-menu-item ">
                                 <a href="/blackList" class="nav-link">
                                     <i class="menu-icon las la-dot-circle"></i>
                                     <span class="menu-title">Blacklist Numbers</span>
@@ -441,221 +443,65 @@
 
                 <div class="row align-items-center mb-15 justify-content-between">
     <div class="col-lg-6 col-sm-6">
-        <h6 class="page-title">Reseller Dashboard</h6>
+    
     </div>
     <div class="col-lg-6 col-sm-6 text-sm-right mt-sm-0 mt-3">
             </div>
 </div>
 
-                    <div class="row mb-none-30">
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--primary b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--primary"><i class="fas fa-envelope"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">SMS Sent</p>
-                    <h2 class="text--primary font-weight-bold widget-amount">0</h2>
-
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--success b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--success"><i class="fas fa-chart-area"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Delivery Update</p>
-                    <h2 class="text--success font-weight-bold widget-amount">0%</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--purple b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--purple"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Promo SMS</p>
-                    <h2 class="text--purple font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--indigo b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--indigo"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Trans SMS</p>
-                    <h2 class="text--indigo font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-    </div><!-- row end-->
-<br>
-<div class="card" id="ecommerceChartView" style="height: auto;">
-            <div class="card-header" style="height: 36px;">
-                <h4></h4>
-                <div class="card-header-action">
-                    <a title="Refresh" href="javascript:void(0)" class="btn btn-icon btn-dark btn-sm" style="color: white;" onclick="BindCharts();"><i class="material-icons">refresh</i></a>
                     
-                </div>
-            </div>
-    <div class="collapse show" id="mycard-collapse">
+
+ <div class="col-lg-6 mb-30">
+            <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblDayBeforeYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div class="hide" id="chrtDayBeforeYestrdayDummy">
+                    <h5 class="card-title mb-50 border-bottom pb-2">Change Password</h5>
+<c:if test="${message ne null}">
+        	 <div id="snackbar">${message}</div>
+        </c:if>
+                    <form:form action="/changepassword" method="POST" enctype="multipart/form-data" modelAttribute="changepwd" id="myForm">
+                      
+                        <div class="form-group">
+                            <label class="form-control-label">Old Password</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="las la-key"></i></span>
                                 </div>
-                                <div id="chrtDayBeforeYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
+                                <input class="form-control" type="password" name="password" id="password" required>
+                                <div class="password-msg"></div>
+                            </div>
+                        </div>
 
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
+                        <div class="form-group">
+                            <label class="form-control-label">New password</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="las la-key"></i></span>
                                 </div>
+                                <input class="form-control" type="password" name="newPassword" id="newpassword" required>
+                                <div class="newpassword-msg"></div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblToday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtToday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Confirm password</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="las la-key"></i></span>
                                 </div>
+                                <input class="form-control" type="password" name="confrmPass" id="cpassword" required>
+                                <div class="cpassword-msg"></div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                       
+                            <button type="submit" id="submit-btn" class="btn btn--primary btn-block btn-lg" class="allowed-submit" disabled="disabled">Save Changes</button>
+                        </div>
+                    </form:form>
                 </div>
             </div>
         </div>
-
-<br>
-        <div class="row">
-            <div id="cphContent_dvSenderRequests" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest SenderId Requests</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="tableBody" id="client-details" tabindex="3" style="height: 400px; overflow: hidden; outline: none;">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
-                                    <thead>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>SenderId</th>
-                                            <th>Status</th>
-                                            <th>Purpose</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbSenderId">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="cphContent_Div1" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Traffic Report (Today)</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="progress-group form-group">
-                                <span class="progress-text">NDNC</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvNdnc"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvNdncP" class="progress-bar progress-bar-aqua"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Rejected</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvRejected"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvRejectedP" class="progress-bar progress-bar-red"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Delivered</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvDelivered"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvDeliveredP" class="progress-bar progress-bar-green"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Total Delivery Received</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvTotalDlr"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvTotalDlrP" class="progress-bar progress-bar-yellow"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+ 
 
 
             </div><!-- bodywrapper__inner end -->
@@ -664,7 +510,9 @@
 
 
 
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
 
  <!-- jQuery library -->
   <!-- jQuery library -->
@@ -694,6 +542,201 @@
 <script src="assets/userpanel/js/app.js"></script>
 
 <script>
+
+	$(document).ready(function () {
+  
+
+
+// valiadtion for Password
+$('#password').on('input', function () {
+
+   var password = $(this).val();
+   
+   var uppercasePassword = /(?=.*?[A-Z])/;
+   var lowercasePassword = /(?=.*?[a-z])/;
+   var digitPassword = /(?=.*?[0-9])/;
+   var spacesPassword = /^$|\s+/;
+   var symbolPassword = /(?=.*?[#?!@$%^&*-])/;
+   var minEightPassword = /.{8,}/;
+
+if (password.length == 0) {
+
+   $('.password-msg').addClass('invalid-msg').text('Password is required');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else if (!uppercasePassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('At least one Uppercase');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else if (!lowercasePassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('At least one Lowercase');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else if (!digitPassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('At least one digit');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+
+} else if (!symbolPassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('At least one special character');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else if (spacesPassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('Whitespaces are not allowed');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else if (!minEightPassword.test(password)) {
+
+   $('.password-msg').addClass('invalid-msg').text('Minimum length 8');
+   $(this).addClass('invalid-input').removeClass('valid-input');
+}
+else {
+   $('.password-msg').empty();
+   $(this).addClass('valid-input').removeClass('invalid-input');
+}
+});
+
+//validation for new password
+$('#newpassword').on('input', function () {
+	var newpassword=$(this).val();
+	var cpassword = $('#cpassword').val();
+
+	   var uppercasePassword = /(?=.*?[A-Z])/;
+	   var lowercasePassword = /(?=.*?[a-z])/;
+	   var digitPassword = /(?=.*?[0-9])/;
+	   var spacesPassword = /^$|\s+/;
+	   var symbolPassword = /(?=.*?[#?!@$%^&*-])/;
+	   var minEightPassword = /.{8,}/;
+
+if (newpassword.length == 0) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('Password is required');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!uppercasePassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('At least one Uppercase');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!lowercasePassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('At least one Lowercase');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!digitPassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('At least one digit');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+
+	} else if (!symbolPassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('At least one special character');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (spacesPassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('Whitespaces are not allowed');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!minEightPassword.test(newpassword)) {
+
+	   $('.newpassword-msg').addClass('invalid-msg').text('Minimum length 8');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	
+	
+	else {
+	   $('.newpassword-msg').empty();
+	   $(this).addClass('valid-input').removeClass('invalid-input');
+	}
+	});
+
+
+//validation for confirm password
+$('#cpassword').on('input', function () {
+	var cpassword=$(this).val();
+	
+	var newpassword = $('#newpassword').val();
+	
+
+	   var uppercasePassword = /(?=.*?[A-Z])/;
+	   var lowercasePassword = /(?=.*?[a-z])/;
+	   var digitPassword = /(?=.*?[0-9])/;
+	   var spacesPassword = /^$|\s+/;
+	   var symbolPassword = /(?=.*?[#?!@$%^&*-])/;
+	   var minEightPassword = /.{8,}/;
+
+if (cpassword.length == 0) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('Password is required');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!uppercasePassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('At least one Uppercase');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!lowercasePassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('At least one Lowercase');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!digitPassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('At least one digit');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+
+	} else if (!symbolPassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('At least one special character');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (spacesPassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('Whitespaces are not allowed');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	else if (!minEightPassword.test(cpassword)) {
+
+	   $('.cpassword-msg').addClass('invalid-msg').text('Minimum length 8');
+	   $(this).addClass('invalid-input').removeClass('valid-input');
+	}
+	
+	else if(newpassword!=cpassword)
+	{
+		$('.cpassword-msg').addClass('invalid-msg').text('Confirm Password Should Matched With New Password');
+		   $(this).addClass('invalid-input').removeClass('valid-input');	
+	}
+	
+	else {
+	   $('.cpassword-msg').empty();
+	   $(this).addClass('valid-input').removeClass('invalid-input');
+	}
+	});
+
+
+// validation to submit the form
+$('input').on('input',function(e){
+   if($('#myForm').find('.valid-input').length==3){
+
+       $('#submit-btn').removeClass('allowed-submit');
+       $('#submit-btn').removeAttr('disabled');
+   }
+  else{
+       e.preventDefault();
+       $('#submit-btn').attr('disabled','disabled')
+       
+      }
+});
+
+});
+</script>
+
+<script>
     'use strict'
     bkLib.onDomLoaded(function() {
         $( ".nicEdit" ).each(function( index ) {
@@ -704,144 +747,8 @@
 </script>
 
 
-    <script src="assets/admin/js/vendor/apexcharts.min.js"></script>
-    <script>
-        'use strict'
-        var options = {
-            series: [{
-                name: 'Total Earnings',
-                data: []            },
-
-            ],
-            chart: {
-                type: 'bar',
-                height: 400,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    endingShape: 'rounded'
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: [],
-            },
-            yaxis: {
-                title: {
-                    text: "₹",
-                    style: {
-                        color: '#7c97bb'
-                    }
-                }
-            },
-            grid: {
-                xaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return "₹" + val + " "
-                    }
-                }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#apex-bar-chart"), options);
-        chart.render();
-    </script>
-    <script>
-        'use strict'
-        var options = {
-            series: [{
-                name: 'Total Widthdraw',
-                data: []            },
-
-
-            ],
-            chart: {
-                type: 'bar',
-                height: 400,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    endingShape: 'rounded'
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: [],
-            },
-            yaxis: {
-                title: {
-                    text: "₹",
-                    style: {
-                        color: '#7c97bb'
-                    }
-                }
-            },
-            grid: {
-                xaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return "₹" + val + " "
-                    }
-                }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#apex-bar-chart-w"), options);
-        chart.render();
-    </script>
+   
+ <script type="text/javascript">toastFunction()</script>   
 
 </body>
 </html>

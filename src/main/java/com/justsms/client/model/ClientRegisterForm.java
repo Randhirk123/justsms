@@ -40,6 +40,13 @@ public class ClientRegisterForm {
 	@Transient
 	private String cpassword;
 	
+	@Transient
+	private String confrmPass;
+
+	@Transient
+	private String newPassword;
+
+	
 	@Column(name="question")
 	private String question;
 	
@@ -178,6 +185,22 @@ public class ClientRegisterForm {
 
 	public void setResetPasswordToken(String resetPasswordToken) {
 		this.resetPasswordToken = resetPasswordToken;
+	}
+
+	public String getConfrmPass() {
+		return confrmPass;
+	}
+
+	public void setConfrmPass(String confrmPass) {
+		this.confrmPass = confrmPass;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 	
 	

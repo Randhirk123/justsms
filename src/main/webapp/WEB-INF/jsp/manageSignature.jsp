@@ -13,7 +13,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Reseller Dashboard</title>
+  <title>Manage signature</title>
   <base
 	href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
   <!-- site favicon -->
@@ -24,6 +24,7 @@
   <!-- bootstrap toggle css -->
   <link rel="stylesheet" href="assets/userpanel/css/vendor/bootstrap-toggle.min.css">
   <!-- fontawesome 5  -->
+  
   <link rel="stylesheet" href="assets/userpanel/css/all.min.css">
   <!-- line-awesome webfont -->
   <link rel="stylesheet" href="assets/userpanel/css/line-awesome.min.css">
@@ -49,7 +50,8 @@
   <link rel="stylesheet" href="assets/userpanel/css/lightcase.css">
   <!-- dashdoard main css -->
   <link rel="stylesheet" href="assets/userpanel/css/app.css">
-
+<link rel="stylesheet" href="css/snackbar.css">
+   <script src="js/sticky.js"></script>
   <link rel="stylesheet" href="assets/additional/bootstrap-fileinput.css">
   <link rel="stylesheet" href="assets/additional/intlTelInput.css">
   
@@ -279,13 +281,13 @@
                    <ul>
                    
                    		 <li class="sidebar-menu-item sidebar-dropdown">
-                    <a href="javascript:void(0)" class="">
+                    <a href="javascript:void(0)" class="side-menu--open">
                         <i class="menu-icon fas fa-wrench"></i>
                         <span class="menu-title">Settings</span>
                     </a>
-                    <div class="sidebar-submenu ">
+                     <div class="sidebar-submenu sidebar-submenu__open ">
                         <ul>
-                            <li class="sidebar-menu-item  ">
+                            <li class="sidebar-menu-item active ">
                                 <a href="/manageSignature" class="nav-link">
                                     <i class="menu-icon las la-dot-circle"></i>
                                     <span class="menu-title">Manage Signature</span>
@@ -441,220 +443,62 @@
 
                 <div class="row align-items-center mb-15 justify-content-between">
     <div class="col-lg-6 col-sm-6">
-        <h6 class="page-title">Reseller Dashboard</h6>
+        <h6 class="page-title">Manage Signature
+</h6>
+<c:if test="${message ne null}">
+        	 <div id="snackbar">${message}</div>
+        </c:if>
     </div>
     <div class="col-lg-6 col-sm-6 text-sm-right mt-sm-0 mt-3">
             </div>
 </div>
 
                     <div class="row mb-none-30">
+<div class="card-body">
+      <form:form class="form-inline" action="/manageSignature" modelAttribute="sign" method="POST" >
+  <div class="form-group">
+    <label class="sr-only">Email</label>
+    <p class="form-control-static">Signature</p>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="text" class="form-control" id="signature" name="signature" placeholder="Enter your signature">
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form:form>
+</div>
 
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--primary b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--primary"><i class="fas fa-envelope"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">SMS Sent</p>
-                    <h2 class="text--primary font-weight-bold widget-amount">0</h2>
+<c:if test="${not empty mgsgList}">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Signature</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${mgsgList}" var="element">
+  	<tr>
+  	<td>${element.created_at}</td>
+  	<td>${element.signature}</td>
+  	<td><i class="fa fa-trash-o" style="font-size:48px;color:red"></i><a onclick="return confirm('Are you sure to delete this item');" href="/delete/${element.id}">
+                      Delete
+                                                </a></td>
+  	</tr>
+  </c:forEach>
+    
+   
+  </tbody>
+</table>
 
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
+</c:if>
 
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--success b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--success"><i class="fas fa-chart-area"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Delivery Update</p>
-                    <h2 class="text--success font-weight-bold widget-amount">0%</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
+  
+  
 
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--purple b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--purple"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Promo SMS</p>
-                    <h2 class="text--purple font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
 
-        <div class="col-xl-3 col-md-4 col-sm-6 mb-30">
-            <div class="widget bb--3 border--indigo b-radius--10 bg--white p-4 box--shadow2 has--link">
-                <a href="#0" class="item--link"></a>
-                <div class="widget__icon b-radius--rounded bg--indigo"><i class="fas fa-dollar-sign"></i></div>
-                <div class="widget__content">
-                    <p class="text-uppercase text-muted widget-caption">Trans SMS</p>
-                    <h2 class="text--indigo font-weight-bold widget-amount">$0</h2>
-                </div>
-                <div class="widget__arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </div><!-- widget end -->
-        </div>
-    </div><!-- row end-->
-<br>
-<div class="card" id="ecommerceChartView" style="height: auto;">
-            <div class="card-header" style="height: 36px;">
-                <h4></h4>
-                <div class="card-header-action">
-                    <a title="Refresh" href="javascript:void(0)" class="btn btn-icon btn-dark btn-sm" style="color: white;" onclick="BindCharts();"><i class="material-icons">refresh</i></a>
-                    
-                </div>
-            </div>
-    <div class="collapse show" id="mycard-collapse">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblDayBeforeYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div class="hide" id="chrtDayBeforeYestrdayDummy">
-                                </div>
-                                <div id="chrtDayBeforeYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblYesterday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtYestrday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong style="font-size: 17px; color: gray;">
-                                    <label id="lblToday"></label>
-                                </strong>
-                            </p>
-                            <div class="chart">
-                                <div id="chrtToday">
-                                    <br />
-                                    <br />
-                                    <p class="text-center">No Data To Display</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-<br>
-        <div class="row">
-            <div id="cphContent_dvSenderRequests" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Latest SenderId Requests</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="tableBody" id="client-details" tabindex="3" style="height: 400px; overflow: hidden; outline: none;">
-                            <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
-                                    <thead>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>SenderId</th>
-                                            <th>Status</th>
-                                            <th>Purpose</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbSenderId">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="cphContent_Div1" class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Traffic Report (Today)</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <div class="progress-group form-group">
-                                <span class="progress-text">NDNC</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvNdnc"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvNdncP" class="progress-bar progress-bar-aqua"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Rejected</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvRejected"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvRejectedP" class="progress-bar progress-bar-red"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Delivered</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvDelivered"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvDeliveredP" class="progress-bar progress-bar-green"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group form-group">
-                                <span class="progress-text">Total Delivery Received</span>
-                                <span class="progress-number"><b>
-                                    <label id="dvTotalDlr"></label>
-                                </b>/
-                                        <label class="totalSmsSent"></label>
-                                </span>
-                                <div class="progress sm">
-                                    <div id="dvTotalDlrP" class="progress-bar progress-bar-yellow"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
@@ -704,144 +548,7 @@
 </script>
 
 
-    <script src="assets/admin/js/vendor/apexcharts.min.js"></script>
-    <script>
-        'use strict'
-        var options = {
-            series: [{
-                name: 'Total Earnings',
-                data: []            },
-
-            ],
-            chart: {
-                type: 'bar',
-                height: 400,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    endingShape: 'rounded'
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: [],
-            },
-            yaxis: {
-                title: {
-                    text: "₹",
-                    style: {
-                        color: '#7c97bb'
-                    }
-                }
-            },
-            grid: {
-                xaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return "₹" + val + " "
-                    }
-                }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#apex-bar-chart"), options);
-        chart.render();
-    </script>
-    <script>
-        'use strict'
-        var options = {
-            series: [{
-                name: 'Total Widthdraw',
-                data: []            },
-
-
-            ],
-            chart: {
-                type: 'bar',
-                height: 400,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    endingShape: 'rounded'
-                },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: [],
-            },
-            yaxis: {
-                title: {
-                    text: "₹",
-                    style: {
-                        color: '#7c97bb'
-                    }
-                }
-            },
-            grid: {
-                xaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                },
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return "₹" + val + " "
-                    }
-                }
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#apex-bar-chart-w"), options);
-        chart.render();
-    </script>
+    <script type="text/javascript">toastFunction()</script>
 
 </body>
 </html>
