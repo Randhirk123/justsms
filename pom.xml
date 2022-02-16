@@ -42,8 +42,23 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.fizzed/ch-smpp -->
+		<dependency>
+			<groupId>com.fizzed</groupId>
+			<artifactId>ch-smpp</artifactId>
+			<version>5.0.9</version>
+		</dependency>
 		
-		
+		<!-- https://mvnrepository.com/artifact/org.jsmpp/jsmpp -->
+<dependency>
+    <groupId>org.jsmpp</groupId>
+    <artifactId>jsmpp</artifactId>
+    <version>2.3.11</version>
+</dependency>
+
+
+
+
 		<!-- PostgreSQL -->
 		 <dependency> <groupId>org.postgresql</groupId> <artifactId>postgresql</artifactId> 
 			</dependency>

@@ -7813,3 +7813,105 @@ table.table--light thead th {
     background-color: transparent;
     color: #5b6e88;
 }
+
+
+
+.myaccordion {
+  max-width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+}
+
+.myaccordion .card,
+.myaccordion .card:last-child .card-header {
+  border: none;
+}
+
+.myaccordion .card-header {
+  border-bottom-color: #EDEFF0;
+  background: transparent;
+}
+
+.myaccordion .fa-stack {
+  font-size: 18px;
+}
+
+.myaccordion .btn {
+  width: 100%;
+  font-weight: bold;
+  color: #004987;
+  padding: 0;
+}
+
+.myaccordion .btn-link:hover,
+.myaccordion .btn-link:focus {
+  text-decoration: none;
+}
+
+.myaccordion li + li {
+  margin-top: 10px;
+}
+
+.card-body .mybutton1 {
+  background-color:orange;
+  border: none;
+  
+  padding: 12px 27px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.card-body .mybutton2 {
+  background-color:red;
+  border: none;
+  color:white;
+  padding: 5px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.card-body .mybutton3 {
+  background-color: #8080ff;
+  border: none;
+  color:white;
+  
+  padding: 5px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+
+input[type="file" i] {
+    
+    padding:0;
+    margin:0;
+}
+
+.pull-left .mysubmit{
+	background-color: #8080ff;
+  border: none;
+  color:white;
+  
+  padding: 5px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+

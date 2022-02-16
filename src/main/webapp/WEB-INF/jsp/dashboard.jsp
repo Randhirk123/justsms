@@ -89,7 +89,7 @@
                          <ul>
                          
                             <li class="sidebar-menu-item  ">
-                                <a href="#" class="nav-link">
+                                <a href="/sendsms" class="nav-link">
                                     <i class="menu-icon las la-dot-circle"></i>
                                     <span class="menu-title">Send SMS</span>
                                 </a>
